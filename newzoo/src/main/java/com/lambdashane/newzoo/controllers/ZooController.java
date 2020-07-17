@@ -28,6 +28,8 @@ public class ZooController
             HttpStatus.OK);
     }
 
+
+//    http://localhost:2019/zoos/zoos/5
     @GetMapping(value = "/zoos/{zooId}",
         produces = "application/json")
     public ResponseEntity<?> getZooById(

@@ -34,7 +34,6 @@ public class ZooServiceImpl implements ZooService
                                       EntityNotFoundException
     {
         return zoorepos.findById(id)
-            .orElseThrow(() -> new EntityNotFoundException("User id " + id + " not found!"));
+            .orElseThrow(() -> new EntityNotFoundException("Zoo id " + id + " not found!"));
     }
-
 }
