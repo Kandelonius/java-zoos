@@ -10,7 +10,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "zoos")
-public class Zoo
+public class Zoo extends Auditable
 {
     /**
      * The primary key (long) of the zoos table.
@@ -25,12 +25,16 @@ public class Zoo
     @JsonIgnoreProperties(value = "zoo", allowSetters = true)
     private List<Telephone> telephones = new ArrayList<>();
 
-    @ManyToMany()
-    @JoinTable(name = "zooanimals",
-        joinColumns = @JoinColumn(name = "zooid"),
-        inverseJoinColumns = @JoinColumn(name = "animalid"))
-    @JsonIgnoreProperties(value = "zoos")
-    private Set<Animal> animals = new HashSet<>();
+    @OneToMany(mappedBy = "zoo",
+        cascade = CascadeType.ALL)
+    @JsonIgnoreProperties(value = "zoos", allowSetters = true)
+    private Set<ZooAnimals> animals = new HashSet<>();
+//    @ManyToMany()
+//    @JoinTable(name = "zooanimals",
+//        joinColumns = @JoinColumn(name = "zooid"),
+//        inverseJoinColumns = @JoinColumn(name = "animalid"))
+//    @JsonIgnoreProperties(value = "zoos")
+//    private Set<Animal> animals = new HashSet<>();
 
     /**
      * The zooname (String). Cannot be null and must be unique
@@ -44,6 +48,46 @@ public class Zoo
     }
 
     public Zoo(String zooname)
+    {
+        this.zooname = zooname;
+    }
+
+    public long getZooid()
+    {
+        return zooid;
+    }
+
+    public void setZooid(long zooid)
+    {
+        this.zooid = zooid;
+    }
+
+    public List<Telephone> getTelephones()
+    {
+        return telephones;
+    }
+
+    public void setTelephones(List<Telephone> telephones)
+    {
+        this.telephones = telephones;
+    }
+
+    public Set<ZooAnimals> getZooAnimals()
+    {
+        return animals;
+    }
+
+    public void setZooAnimals(Set<ZooAnimals> animals)
+    {
+        this.animals = animals;
+    }
+
+    public String getZooname()
+    {
+        return zooname;
+    }
+
+    public void setZooname(String zooname)
     {
         this.zooname = zooname;
     }

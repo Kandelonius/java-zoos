@@ -8,7 +8,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "animals")
-public class Animal
+public class Animal extends Auditable
 {
     /**
      * The primary key (long) of the animals table.
@@ -19,9 +19,13 @@ public class Animal
 
     private String animaltype;
 
-    @ManyToMany(mappedBy = "animals")
-    @JsonIgnoreProperties(value = "animals")
-    private Set<Zoo> zoos = new HashSet<>();
+    @OneToMany(mappedBy = "animal",
+        cascade = CascadeType.ALL)
+    @JsonIgnoreProperties(value = "animals", allowSetters = true)
+    private Set<ZooAnimals> zoos = new HashSet<>();
+//    @ManyToMany(mappedBy = "animals")
+//    @JsonIgnoreProperties(value = "animals")
+//    private Set<Zoo> zoos = new HashSet<>();
 
     public Animal()
     {
@@ -50,5 +54,15 @@ public class Animal
     public void setAnimaltype(String animaltype)
     {
         this.animaltype = animaltype;
+    }
+
+    public Set<ZooAnimals> getZoos()
+    {
+        return zoos;
+    }
+
+    public void setZoos(Set<ZooAnimals> zoos)
+    {
+        this.zoos = zoos;
     }
 }
