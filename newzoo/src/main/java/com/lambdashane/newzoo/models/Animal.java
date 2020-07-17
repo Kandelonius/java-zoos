@@ -61,7 +61,7 @@ public class Animal extends Auditable
         return zoo;
     }
 
-    public void setZoo(Set<ZooAnimals> zoos)
+    public void setZoo(Set<ZooAnimals> zoo)
     {
         this.zoo = zoo;
     }
