@@ -27,7 +27,7 @@ public class Zoo extends Auditable
 
     @OneToMany(mappedBy = "zoo",
         cascade = CascadeType.ALL)
-    @JsonIgnoreProperties(value = "zoos", allowSetters = true)
+    @JsonIgnoreProperties(value = "zoo", allowSetters = true)
     private Set<ZooAnimals> animals = new HashSet<>();
 //    @ManyToMany()
 //    @JoinTable(name = "zooanimals",
@@ -72,7 +72,7 @@ public class Zoo extends Auditable
         this.telephones = telephones;
     }
 
-    public Set<ZooAnimals> getZooAnimals()
+    public Set<ZooAnimals> getAnimal()
     {
         return animals;
     }

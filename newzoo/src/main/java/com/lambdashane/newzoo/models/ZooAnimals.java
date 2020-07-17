@@ -12,13 +12,13 @@ public class ZooAnimals extends Auditable implements Serializable
     @Id
     @ManyToOne
     @JoinColumn(name = "zooid")
-    @JsonIgnoreProperties(value = "animals", allowSetters = true)
+    @JsonIgnoreProperties(value = "animal", allowSetters = true)
     private Zoo zoo;
 
     @Id
     @ManyToOne
     @JoinColumn(name = "animalid")
-    @JsonIgnoreProperties(value = "zoos", allowSetters = true)
+    @JsonIgnoreProperties(value = "zoo", allowSetters = true)
     private Animal animal;
 
     private String incomingzoo;
@@ -84,8 +84,6 @@ public class ZooAnimals extends Auditable implements Serializable
             ((that.zoo == null) ? 0 : that.zoo.getZooid()) &&
             ((this.animal == null) ? 0 : this.animal.getAnimalid()) ==
                 ((that.animal == null) ? 0 : that.animal.getAnimalid());
-//        return zoo.equals(that.zoo) &&
-//            animal.equals(that.animal);
     }
 
     @Override
