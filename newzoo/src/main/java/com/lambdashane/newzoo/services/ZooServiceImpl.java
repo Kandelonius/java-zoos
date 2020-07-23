@@ -1,7 +1,9 @@
 package com.lambdashane.newzoo.services;
 
 import com.lambdashane.newzoo.models.Zoo;
+import com.lambdashane.newzoo.repository.AnimalRepository;
 import com.lambdashane.newzoo.repository.ZooRepository;
+import com.lambdashane.newzoo.views.AnimalCount;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,9 @@ public class ZooServiceImpl implements ZooService
 
     @Autowired
     private ZooRepository zoorepos;
+
+    @Autowired
+    private AnimalRepository animalRepos;
 
     @Override
     public List<Zoo> findAll()
@@ -36,4 +41,6 @@ public class ZooServiceImpl implements ZooService
         return zoorepos.findById(id)
             .orElseThrow(() -> new EntityNotFoundException("Zoo id " + id + " not found!"));
     }
+
+
 }

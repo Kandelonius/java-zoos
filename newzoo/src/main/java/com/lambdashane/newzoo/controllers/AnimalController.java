@@ -19,9 +19,11 @@ public class AnimalController
     AnimalService animalService;
 
     @GetMapping(value = "/count",
-        produces = "application/json")
-    public ResponseEntity<?> getAnimalCount() {
-        List<AnimalCount> animalList = animalService.getCount();
-        return new ResponseEntity<>(animalList, HttpStatus.OK);
+    produces = "application/json")
+    public ResponseEntity<?> getZooAnimalCounts()
+    {
+        List<AnimalCount> myAnimals = animalService.getZooCountAnimals();
+        return new ResponseEntity<>(myAnimals,
+            HttpStatus.OK);
     }
 }

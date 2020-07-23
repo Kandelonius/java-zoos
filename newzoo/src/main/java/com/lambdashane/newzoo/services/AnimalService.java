@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface AnimalService
 {
-    List<AnimalCount> getCount();
+    List<AnimalCount> getZooCountAnimals();
 }

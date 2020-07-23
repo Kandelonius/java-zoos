@@ -2,6 +2,7 @@ package com.lambdashane.newzoo.controllers;
 
 import com.lambdashane.newzoo.models.Zoo;
 import com.lambdashane.newzoo.services.ZooService;
+import com.lambdashane.newzoo.views.AnimalCount;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,11 +31,11 @@ public class ZooController
 
 
 //    http://localhost:2019/zoos/zoos/5
-    @GetMapping(value = "/zoos/{zooId}",
-        produces = "application/json")
-    public ResponseEntity<?> getZooById(
-        @PathVariable
-            Long zooId)
+@GetMapping(value = "/zoo/{zooId}",
+    produces = "application/json")
+public ResponseEntity<?> getZooById(
+    @PathVariable
+        Long zooId)
     {
         Zoo z = zooService.findZooById(zooId);
         return new ResponseEntity<>(z,

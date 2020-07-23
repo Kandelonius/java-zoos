@@ -9,9 +9,9 @@ import java.util.List;
 
 public interface AnimalRepository extends CrudRepository<Animal, Long>
 {
-    @Query(value = "SELECT  a.animaltype as animal, count(z.zooid) as zoocount FROM ANIMAL " +
-        "a LEFT JOIN  zooanimals z ON a.animalid = z.animalid " +
-        "GROUP BY  animal ORDER BY  zoocount",
+    @Query(value = "SELECT a.animaltype as animal_type, count(z.zooid) as zoocount " +
+        "FROM animals a LEFT JOIN zooanimals z ON a.animalid = z.animalid " +
+        "GROUP BY a.animalid",
         nativeQuery = true)
-    List<AnimalCount> getCount();
+    List<AnimalCount> getCountzooanimals();
 }

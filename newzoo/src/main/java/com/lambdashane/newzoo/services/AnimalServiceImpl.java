@@ -13,10 +13,15 @@ public class AnimalServiceImpl implements AnimalService
 
     @Autowired
     AnimalRepository animalrepos;
-
-    @Override
-    public List<AnimalCount> getCount()
-    {
-        return animalrepos.getCount();
-    }
+//
+//    @Override
+//    public List<AnimalCount> getCount()
+//    {
+//        return zoo.getCountzooanimals();
+//    }
+        @Override
+        public List<AnimalCount> getZooCountAnimals()
+        {
+            return animalrepos.getCountzooanimals();
+        }
 }
